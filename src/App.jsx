@@ -16,20 +16,26 @@ function App() {
 
   return (
     <>
+      <div className={s.top}>
       <img className={s.logo} src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-rick-flying-transparent-png-stickpng-15.png" alt="" />
-      <div>
         <label htmlFor="">Search name</label>
         <input type="text" placeholder='Input the character name'/>
       </div>
       <main>
-        {data.map((item, index) => {
-          return(
-            <div>
-              <h2>{item.name}</h2>
-              <img src={item.image} alt={item.name} />
-            </div>
-          )
-        })}
+        <div className={s.pessoasGridResenhuda}> 
+          {data.map((item, index) => {
+            return(
+              <div>
+                <img src={item.image} alt={item.name} />
+                <h2>{item.name}</h2>
+                <p>{item.species}</p>
+                <p>{item.status === "Dead" ? "Morreu 💀" : item.status === "Alive" ? "Vivinho da silva🧬" : "Não sei 😶"}</p>
+                <p>Origin : {item.origin.name}</p>
+              </div>
+            )
+          })}
+        </div>
+
       </main>
     </>
   )

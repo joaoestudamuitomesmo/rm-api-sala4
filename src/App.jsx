@@ -4,22 +4,27 @@ import { useState, useEffect } from 'react'
 
 function App() {
   const [data, setData] = useState([])
+  const [name, setName] = useState("")
+  const [page, setPage] = useState("")
 
   useEffect(() => {
-    api.get(`/character`).then((response) =>{
+    api.get(`/character/?page=${page}&name=${name}`).then((response) =>{
       setData(response.data.results)
       console.log(response.data.results)
     }).catch((error) => {
       console.error("deu ruim!!!!!!!!!!!! ", error)
     })
-  }, [])
+  }, [page, name])
 
   return (
     <>
       <div className={s.top}>
       <img className={s.logo} src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-rick-flying-transparent-png-stickpng-15.png" alt="" />
         <label htmlFor="">Search name</label>
-        <input type="text" placeholder='Input the character name'/>
+        <input type="text" placeholder='Input the character name' value={name} onChange={(e) => setName(e.target.value)}/>
+
+        <label htmlFor="">Choose Page</label>
+        <input type="number" placeholder='Input the page' value={page} onChange={(e) => setPage(e.target.value)}/>
       </div>
       <main>
         <div className={s.pessoasGridResenhuda}> 

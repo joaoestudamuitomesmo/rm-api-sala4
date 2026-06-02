@@ -10,11 +10,6 @@ body{
     background-attachment: fixed;
 }
 
-img{
-    border-radius: 12px;
-    box-shadow: 0px 4px 0px black;
-}
-
 main{
     display: flex;
     flex-direction: column;
